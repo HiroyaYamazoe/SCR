@@ -10,7 +10,7 @@
 
 #' Example of The artificial data
 #' 
-#' An Example of the artificial data with t for 3d plot used in the paper.
+#' An Example of the artificial data with t for 3d plot used in Yamazoe and Naito (2023).
 #' 
 #' @format "" `three_dimension_ex_with_t`
 #' A data frame with 600 rows and 4 columns.

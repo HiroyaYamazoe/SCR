@@ -1,6 +1,6 @@
 #' SCR for 2d Data
 #'
-#' Construct SCR for 2d Data with Algorithms in the paper.
+#' Construct SCR for 2d Data with Algorithms in Yamazoe and Naito (2023).
 #' @param data Matrix or data.frame with two columns.
 #' @param t Vector whose length is the same as the number of rows in the data. It represents the covariate. This is not always necessary.
 #' @param alpha Numeric. 1 - confidence coefficient.
