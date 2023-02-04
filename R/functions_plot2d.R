@@ -1,28 +1,30 @@
-#' S.C.R for 2d Data
+#' SCR for 2d Data
 #'
-#' Construct S.C.R for 2d Data with Algorithms in the paper.
+#' Construct SCR for 2d Data with Algorithms in the paper.
 #' @param data Matrix or data.frame with two columns.
-#' @param t Vector whose length is the same as the number of rows in the data. This is not always necessary.
+#' @param t Vector whose length is the same as the number of rows in the data. It represents the covariate. This is not always necessary.
 #' @param alpha Numeric. 1 - confidence coefficient.
-#' @param h_hat "MAX", "AM", "GM" or "MIN". This parameter determines the choice of h in the Algorithms
-#' @param cent Boolean. 
-#' @param p
-#' @param grid_points
-#' @param point_size
-#' @param point_color
-#' @param point_shape
-#' @param curve_size
-#' @param curve_color
-#' @param curve_linetype
-#' @param scr_alpha
-#' @param scr_color
-#' @param scr_fill
-#' @param xlabel
-#' @param ylabel
-#' @param xlimit
-#' @param ylimit
-#' @param plot_title
-#' @param aspect
+#' @param h_hat "MAX", "AM", "GM" or "MIN". This parameter determines the choice of h in the Algorithms.
+#' @param cent Boolean. TRUE, Algorithm2; FALSE, Algorithm1.
+#' @param p Numeric. This value is used in Algorithm2. The recommend value is written in the paper.
+#' @param grid_points Numeric. the number of evaluate points.
+#' @param point_size Numeric. Dot size of the data points in 2d plot.
+#' @param point_color String. Dot color of the data points in 2d plot.
+#' @param point_shape Numeric. Shape of the data points in 2d plot.
+#' @param curve_size Numeric. Width of the estimated curve in 2d plot.
+#' @param curve_color String. Color of the estimated curve in 2d plot.
+#' @param curve_linetype String. Line type of the estimated curve in 2d plot.
+#' @param scr_alpha Numeric from 0 to 1. Transparency of the SCR in 2d plot.
+#' @param scr_color String. The inner color of the SCR in 2d plot.
+#' @param scr_fill String. The boundary color of the SCR. It should be the same as the inner color.
+#' @param xlabel String. The label of x-axis.
+#' @param ylabel String. The label of y-axis.
+#' @param xlimit Vector from the minimum value to the maximum value of x-axis to illustrate.
+#' @param ylimit Vector from the minimum value to the maximum value of y-axis to illustrate.
+#' @param plot_title String. The title of the figure.
+#' @param aspect Boolean. If TRUE (recommended), the figure is drawn to match the actual aspect.
+#' 
+#' @return The figure of SCR and the radius of the cross-section of the region.
 #' 
 #' @import ggplot2
 #' @import KernSmooth

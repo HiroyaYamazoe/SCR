@@ -1,9 +1,10 @@
 Package: SCR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("Hiroya", "Yamazoe", , "iwtbsos26@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Title: Simultaneous Confidence Region of an Embedded One-dimensional Curve
+Version: 0.0.1
+Authors@R: c(
+    person("Hiroya", "Yamazoe", email = "iwtbsos26@gmail.com", role = c("aut", "cre")),
+    person("kanta", "Naito", email = "naito@math.s.chiba-u.ac.jp", role = "aut"))
+Description: Construct and illustrate simultaneous confidence region (SCR) of an embedded one-dimensional curve in two- and three- dimensional space.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

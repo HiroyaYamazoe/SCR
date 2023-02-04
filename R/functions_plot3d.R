@@ -2,22 +2,25 @@
 #' 
 #' Construct S.C.R for 3d Data with Algorithms in the paper.
 #' @param data Matrix or data.frame with three columns.
-#' @param t Vector whose length is the same as the number of rows in the data. This is not always necessary.
-#' @param div
-#' @param alpha
-#' @param h_hat
-#' @param cent
-#' @param p
-#' @param grid_points
-#' @param point_size
-#' @param point_color
-#' @param curve_size
-#' @param curve_color
-#' @param scr_alpha
-#' @param scr_color
-#' @param xlabel
-#' @param ylabel
-#' @param zlabel
+#' @param t Vector whose length is the same as the number of rows in the data. It represents the covariate. This is not always necessary.
+#' @param div Numeric. The number of vertices in the cross-section of the region.
+#' @param alpha Numeric. 1 - confidence coefficient.
+#' @param h_hat "MAX", "AM", "GM" or "MIN". This parameter determines the choice of h in the Algorithms.
+#' @param cent Boolean. TRUE, Algorithm2; FALSE, Algorithm1.
+#' @param p Numeric. This value is used in Algorithm2. The recommend value is written in the paper.
+#' @param grid_points Numeric. the number of evaluate points.
+#' @param point_size Numeric. Dot size of the data points in 3d plot.
+#' @param point_color String. Dot color of the data points in 3d plot.
+#' @param curve_size Numeric. Width of the estimated curve in 3d plot.
+#' @param curve_color String. Color of the estimated curve in 3d plot.
+#' @param scr_alpha Numeric from 0 to 1. Transparency of the SCR in 3d plot.
+#' @param scr_color String. The color of the SCR in 3d plot.
+#' @param xlabel String. The label of x-axis.
+#' @param ylabel String. The label of y-axis.
+#' @param zlabel String. The label of z-axis.
+#' @param aspect Boolean. If TRUE (recommended), the figure is drawn to match the actual aspect.
+#' 
+#' @return The figure of SCR and the radius of the cross-section of the region.
 #' 
 #' @import dplyr
 #' @import KernSmooth
@@ -25,7 +28,7 @@
 #' @import rgl
 #' @export
 #' 
-scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_hat = "AM", cent = TRUE, p = 2, grid_points = 201L, point_size = 1, point_color = "black", curve_size = 4, curve_color = "black", scr_alpha = 0.4, scr_color = "#afafaf", xlabel = "y1", ylabel = "y2", zlabel = "y3") {
+scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_hat = "AM", cent = TRUE, p = 2, grid_points = 201L, point_size = 1, point_color = "black", curve_size = 4, curve_color = "black", scr_alpha = 0.4, scr_color = "#afafaf", xlabel = "y1", ylabel = "y2", zlabel = "y3", aspect = TRUE) {
    if (is.null(t)) {
       t <- prcomp(data, center = TRUE)
       t <- (t$x[, 1]) %>% scale() %>% pnorm()
@@ -53,7 +56,9 @@ scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_hat = "AM", cent = T
    plot3d(data, xlab = xlabel, ylab = ylabel, zlab = zlabel, col = point_color, lwd = point_size)
    plot3d(llr, type = "l", col = curve_color, lwd = curve_size, add = TRUE)
    shade3d(qmes, alpha = scr_alpha, col = scr_color)
-   aspect3d("iso")
+   if (aspect) {
+      aspect3d("iso")
+   }
    return(rn)
 }
 
