@@ -29,6 +29,9 @@
 #' @export
 #' 
 scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_hat = "AM", cent = TRUE, p = 2, grid_points = 201L, point_size = 1, point_color = "black", curve_size = 4, curve_color = "black", scr_alpha = 0.4, scr_color = "#afafaf", xlabel = "y1", ylabel = "y2", zlabel = "y3", aspect = TRUE) {
+   if (ncol(data) != 3) {
+      stop("the data must be three dimensional.")
+   }
    if (is.null(t)) {
       t <- prcomp(data, center = TRUE)
       t <- (t$x[, 1]) %>% scale() %>% pnorm()
