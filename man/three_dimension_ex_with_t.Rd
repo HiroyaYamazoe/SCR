@@ -14,6 +14,6 @@ The 4th column is the corresponding covariate.
 three_dimension_ex_with_t
 }
 \description{
-An Example of the artificial data with t for 3d plot used in the paper.
+An Example of the artificial data with t for 3d plot used in Yamazoe and Naito (2023).
 }
 \keyword{datasets}

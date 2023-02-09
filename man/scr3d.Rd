@@ -9,6 +9,7 @@ scr3d(
   t = NULL,
   div = 16,
   alpha = 0.05,
+  h_coef = 1,
   h_hat = "AM",
   cent = TRUE,
   p = 2,
@@ -33,6 +34,8 @@ scr3d(
 \item{div}{Numeric. The number of vertices in the cross-section of the region.}
 
 \item{alpha}{Numeric. 1 - confidence coefficient.}
+
+\item{h_coef}{Numeric. The bandwidth used in local linear regression for phi_i is h_coef * h_ROT. Default value is 1.}
 
 \item{h_hat}{"MAX", "AM", "GM" or "MIN". This parameter determines the choice of h in the Algorithms.}
 
@@ -66,5 +69,5 @@ scr3d(
 The figure of SCR and the radius of the cross-section of the region.
 }
 \description{
-Construct S.C.R for 3d Data with Algorithms in the paper.
+Construct S.C.R for 3d Data with Algorithms in Yamazoe and Naito (2023).
 }

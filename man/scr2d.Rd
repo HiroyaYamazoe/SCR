@@ -8,6 +8,7 @@ scr2d(
   data,
   t = NULL,
   alpha = 0.05,
+  h_coef = 1,
   h_hat = "AM",
   cent = TRUE,
   p = 4/3,
@@ -35,6 +36,8 @@ scr2d(
 \item{t}{Vector whose length is the same as the number of rows in the data. It represents the covariate. This is not always necessary.}
 
 \item{alpha}{Numeric. 1 - confidence coefficient.}
+
+\item{h_coef}{Numeric. The bandwidth used in local linear regression for phi_i is h_coef * h_ROT.}
 
 \item{h_hat}{"MAX", "AM", "GM" or "MIN". This parameter determines the choice of h in the Algorithms.}
 
@@ -78,5 +81,5 @@ scr2d(
 The figure of SCR and the radius of the cross-section of the region.
 }
 \description{
-Construct SCR for 2d Data with Algorithms in the paper.
+Construct SCR for 2d Data with Algorithms in Yamazoe and Naito (2023).
 }
