@@ -73,7 +73,7 @@ scr2d <- function(data, t = NULL, alpha = 0.05, h_coef = 1, h_hat = "AM", cent =
       p <- p + coord_equal()
    }
    plot(p)
-   return(rn)
+   return(list(rn, h_vec))
 }
 
 

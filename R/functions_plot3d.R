@@ -63,7 +63,7 @@ scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_coef = 1, h_hat = "A
    if (aspect) {
       aspect3d("iso")
    }
-   return(rn)
+   return(list(rn, h_vec))
 }
 
 f_3d_all <- function(data, div = 8, alpha = 0.05, flag = "MIN", cent = TRUE, p = 2, grid = 201L, beta = 0) {
