@@ -25,7 +25,7 @@
 #' @param plot_title String. The title of the figure.
 #' @param aspect Boolean. If TRUE (recommended), the figure is drawn to match the actual aspect.
 #' 
-#' @return The figure of SCR and the radius of the cross-section of the region.
+#' @return The figure of SCR, and list of the radius of the cross-section of the region and the bandwidth vector in local linear regression for phi_1 to phi_d.
 #' 
 #' @import ggplot2
 #' @import KernSmooth
@@ -73,7 +73,7 @@ scr2d <- function(data, t = NULL, alpha = 0.05, h_coef = 1, h_hat = "AM", cent =
       p <- p + coord_equal()
    }
    plot(p)
-   return(list(rn, h_vec))
+   return(list(r_n = rn, h_vector = h_vec))
 }
 
 

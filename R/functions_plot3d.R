@@ -21,7 +21,7 @@
 #' @param zlabel String. The label of z-axis.
 #' @param aspect Boolean. If TRUE (recommended), the figure is drawn to match the actual aspect.
 #' 
-#' @return The figure of SCR and the radius of the cross-section of the region.
+#' @return The figure of SCR, and list of the radius of the cross-section of the region and the bandwidth vector in local linear regression for phi_1 to phi_d.
 #' 
 #' @import dplyr
 #' @import KernSmooth
@@ -63,7 +63,7 @@ scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_coef = 1, h_hat = "A
    if (aspect) {
       aspect3d("iso")
    }
-   return(list(rn, h_vec))
+   return(list(r_n = rn, h_vector = h_vec))
 }
 
 f_3d_all <- function(data, div = 8, alpha = 0.05, flag = "MIN", cent = TRUE, p = 2, grid = 201L, beta = 0) {
