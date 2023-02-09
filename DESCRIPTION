@@ -1,6 +1,6 @@
 Package: SCR
 Title: Simultaneous Confidence Region of an Embedded One-dimensional Curve
-Version: 0.1.4
+Version: 0.1.5
 Authors@R: c(
     person("Hiroya", "Yamazoe", email = "iwtbsos26@gmail.com", role = c("aut", "cre")),
     person("kanta", "Naito", email = "naito@math.s.chiba-u.ac.jp", role = "aut"))
