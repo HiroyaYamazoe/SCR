@@ -32,7 +32,7 @@ f_locpoly_vec <- function(x, y, t_vec) {
 
 ####derive LLE with KernSmooth####
 ####returned data: phi1, phi2, phi3, t####
-f_llr <- function(d, t = NULL, grid = 201L) {
+f_llr <- function(d, t = NULL, grid = 201L, h_coef) {
    if (is.null(t)) {
       t <- d[, ncol(d)]
       data <- d[, - ncol(d)]
@@ -43,7 +43,7 @@ f_llr <- function(d, t = NULL, grid = 201L) {
    h_vec <- NULL
    for(i in 1 : ncol(data)) {
       y <- data[, i]
-      h <- thumbBw(t, y, deg = 1, kernel = gaussK)
+      h <- thumbBw(t, y, deg = 1, kernel = gaussK) * h_coef
       fit <- locpoly(t, y, bandwidth = h, drv = 0, range.x = range(t), degree = 1, gridsize = grid, truncate = FALSE)
       rgm <- cbind(rgm, fit$y)
       h_vec <- c(h_vec, h)

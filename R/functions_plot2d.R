@@ -4,6 +4,7 @@
 #' @param data Matrix or data.frame with two columns.
 #' @param t Vector whose length is the same as the number of rows in the data. It represents the covariate. This is not always necessary.
 #' @param alpha Numeric. 1 - confidence coefficient.
+#' @param h_coef Numeric. The bandwidth used in local linear regression for phi_i is h_coef * h_ROT.
 #' @param h_hat "MAX", "AM", "GM" or "MIN". This parameter determines the choice of h in the Algorithms.
 #' @param cent Boolean. TRUE, Algorithm2; FALSE, Algorithm1.
 #' @param p Numeric. This value is used in Algorithm2. The recommend value is written in the paper.
@@ -32,7 +33,7 @@
 #' @import dplyr
 #' @export 
 #' 
-scr2d <- function(data, t = NULL, alpha = 0.05, h_hat = "AM", cent = TRUE, p = 4 / 3, grid_points = 201L, point_size = 3, point_color = "black", point_shape = 1, curve_size = 1.5, curve_color = "black", curve_linetype = "solid", scr_alpha = 1, scr_color = "#dfdfdf", scr_fill = "#dfdfdf", xlabel = "y1", ylabel = "y2", xlimit = NULL, ylimit = NULL, plot_title = "", aspect = TRUE) {
+scr2d <- function(data, t = NULL, alpha = 0.05, h_coef = 1, h_hat = "AM", cent = TRUE, p = 4 / 3, grid_points = 201L, point_size = 3, point_color = "black", point_shape = 1, curve_size = 1.5, curve_color = "black", curve_linetype = "solid", scr_alpha = 1, scr_color = "#dfdfdf", scr_fill = "#dfdfdf", xlabel = "y1", ylabel = "y2", xlimit = NULL, ylimit = NULL, plot_title = "", aspect = TRUE) {
    if (ncol(data) != 2) {
       stop("the data must be two dimensional.")
    }
@@ -41,7 +42,7 @@ scr2d <- function(data, t = NULL, alpha = 0.05, h_hat = "AM", cent = TRUE, p = 4
       t <- (t$x[, 1]) %>% scale() %>% pnorm()
    }
    d <- cbind(data, t)
-   llr_h <- f_llr(d, grid = grid_points)
+   llr_h <- f_llr(d, grid = grid_points, h_coef = h_coef)
    llr <- llr_h[[1]]
    h_vec <- llr_h[[2]]
    llr_d <- f_llrd(d, h_vec, grid = grid_points)

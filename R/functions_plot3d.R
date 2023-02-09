@@ -5,6 +5,7 @@
 #' @param t Vector whose length is the same as the number of rows in the data. It represents the covariate. This is not always necessary.
 #' @param div Numeric. The number of vertices in the cross-section of the region.
 #' @param alpha Numeric. 1 - confidence coefficient.
+#' @param h_coef Numeric. The bandwidth used in local linear regression for phi_i is h_coef * h_ROT. Default value is 1.
 #' @param h_hat "MAX", "AM", "GM" or "MIN". This parameter determines the choice of h in the Algorithms.
 #' @param cent Boolean. TRUE, Algorithm2; FALSE, Algorithm1.
 #' @param p Numeric. This value is used in Algorithm2. The recommend value is written in the paper.
@@ -28,7 +29,7 @@
 #' @import rgl
 #' @export
 #' 
-scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_hat = "AM", cent = TRUE, p = 2, grid_points = 201L, point_size = 1, point_color = "black", curve_size = 4, curve_color = "black", scr_alpha = 0.4, scr_color = "#afafaf", xlabel = "y1", ylabel = "y2", zlabel = "y3", aspect = TRUE) {
+scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_coef = 1, h_hat = "AM", cent = TRUE, p = 2, grid_points = 201L, point_size = 1, point_color = "black", curve_size = 4, curve_color = "black", scr_alpha = 0.4, scr_color = "#afafaf", xlabel = "y1", ylabel = "y2", zlabel = "y3", aspect = TRUE) {
    if (ncol(data) != 3) {
       stop("the data must be three dimensional.")
    }
@@ -37,7 +38,7 @@ scr3d <- function(data, t = NULL, div = 16, alpha = 0.05, h_hat = "AM", cent = T
       t <- (t$x[, 1]) %>% scale() %>% pnorm()
    }
    d <- cbind(data, t)
-   llr_h <- f_llr(d)
+   llr_h <- f_llr(d, grid = grid_points, h_coef = h_coef)
    llr <- llr_h[[1]]
    h_vec <- llr_h[[2]]
    llr_d <- f_llrd(d, h_vec, grid = grid_points)
