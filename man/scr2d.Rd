@@ -78,7 +78,7 @@ scr2d(
 \item{aspect}{Boolean. If TRUE (recommended), the figure is drawn to match the actual aspect.}
 }
 \value{
-The figure of SCR and the radius of the cross-section of the region.
+The figure of SCR, and list of the radius of the cross-section of the region and the bandwidth vector in local linear regression for phi_1 to phi_d.
 }
 \description{
 Construct SCR for 2d Data with Algorithms in Yamazoe and Naito (2023).
